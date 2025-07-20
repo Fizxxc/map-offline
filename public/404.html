@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+        .glitch {
+            font-size: 8rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            position: relative;
+            color: #fff;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        .glitch:before,
+        .glitch:after {
+            content: '404';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            opacity: 0.7;
+            clip: rect(0, 900px, 0, 0);
+        }
+        .glitch:before {
+            animation: glitchTop 1s infinite linear alternate-reverse;
+            color: #00fff9;
+        }
+        .glitch:after {
+            animation: glitchBottom 1s infinite linear alternate-reverse;
+            color: #ff00c8;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #00fff9, -2px 0 #ff00c8; }
+            20% { text-shadow: -2px -2px #00fff9, 2px 2px #ff00c8; }
+            40% { text-shadow: 2px 2px #00fff9, -2px -2px #ff00c8; }
+            60% { text-shadow: -2px 2px #00fff9, 2px -2px #ff00c8; }
+            80% { text-shadow: 2px 0 #00fff9, -2px 0 #ff00c8; }
+            100% { text-shadow: none; }
+        }
+        @keyframes glitchTop {
+            0% { clip: rect(0, 900px, 0, 0); }
+            10% { clip: rect(0, 900px, 50px, 0); left: 2px; }
+            20% { clip: rect(0, 900px, 0, 0); left: 0; }
+            30% { clip: rect(0, 900px, 40px, 0); left: -2px; }
+            40%, 100% { clip: rect(0, 900px, 0, 0); left: 0; }
+        }
+        @keyframes glitchBottom {
+            0% { clip: rect(0, 900px, 0, 0); }
+            10% { clip: rect(60px, 900px, 100px, 0); left: -2px; }
+            20% { clip: rect(0, 900px, 0, 0); left: 0; }
+            30% { clip: rect(80px, 900px, 140px, 0); left: 2px; }
+            40%, 100% { clip: rect(0, 900px, 0, 0); left: 0; }
+        }
+        .message {
+            font-size: 2rem;
+            margin-top: 1.5rem;
+            color: #e0e0e0;
+            animation: fadeIn 2s;
+        }
+        .home-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            color: #fff;
+            background: linear-gradient(90deg, #00fff9 0%, #ff00c8 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: fadeInUp 1.5s;
+        }
+        .home-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        /* Animated floating shapes */
+        .shapes {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 8s infinite ease-in-out alternate;
+        }
+        .shape1 { width: 180px; height: 180px; background: #00fff9; left: 10%; top: 15%; animation-delay: 0s;}
+        .shape2 { width: 120px; height: 120px; background: #ff00c8; right: 12%; top: 30%; animation-delay: 2s;}
+        .shape3 { width: 90px; height: 90px; background: #fff; left: 25%; bottom: 18%; animation-delay: 4s;}
+        .shape4 { width: 60px; height: 60px; background: #00fff9; right: 20%; bottom: 10%; animation-delay: 1s;}
+        @keyframes float {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-40px) scale(1.1);}
+        }
+        @media (max-width: 600px) {
+            .glitch { font-size: 3.5rem; }
+            .message { font-size: 1.1rem; }
+            .home-btn { font-size: 1rem; padding: 0.6rem 1.5rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+    <div class="container">
+        <div class="glitch">404</div>
+        <div class="message">Oops! Halaman tidak ditemukan.</div>
+        <a href="/" class="home-btn">Kembali ke Beranda</a>
+    </div>
+</body>
+</html>
